@@ -1,0 +1,978 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Portfolio | Amr Gamal Awad</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/css/lightbox.min.css">
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <style>
+    /* ---------------- basic ---------------- */
+    html { scroll-behavior: smooth; }
+    :root{
+      --neon1: #00fff7;
+      --neon2: #ff00ff;
+      --neon3: #00ff88;
+      --dark-bg: #050505;
+      --muted: rgba(255,255,255,0.05);
+    }
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: radial-gradient(circle at top left, rgba(0,255,247,0.12), rgba(0,0,0,0.95) 70%),
+                  radial-gradient(circle at bottom right, rgba(255,0,255,0.12), rgba(0,0,0,0.95) 70%);
+      background-color: var(--dark-bg);
+      color: #e0e0e0;
+      line-height: 1.8;
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+    }
+
+    /* ---------------- header/nav ---------------- */
+    header {
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:20px 40px;
+      position:sticky;
+      top:0;
+      background: rgba(5,5,5,0.8);
+      backdrop-filter: blur(6px);
+      z-index: 999;
+      box-shadow: 0 0 8px rgba(0,255,247,0.06);
+    }
+    .logo {
+      font-size:1.5rem;
+      font-weight:700;
+      background: linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3));
+      background-size:300%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation: neonMove 6s linear infinite;
+      text-shadow: 0 0 10px rgba(0,255,247,0.35);
+    }
+    nav ul {
+      list-style:none;
+      display:flex;
+      gap:20px;
+      margin:0;
+      padding:0;
+      align-items:center;
+    }
+    nav a{
+      color:#e0e0e0;
+      text-decoration:none;
+      font-weight:500;
+      transition: all .25s ease;
+    }
+    nav a:hover{ color: var(--neon1); text-shadow:0 0 6px var(--neon1); }
+
+    @keyframes neonMove{
+      0%{background-position:0% 50%}
+      50%{background-position:100% 50%}
+      100%{background-position:0% 50%}
+    }
+
+    /* ---------------- hero ---------------- */
+    .hero{
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:60px 20px 30px;
+      gap:40px;
+      flex-wrap:wrap;
+      text-align:left;
+    }
+    .profile-pic{
+      width:180px; height:180px;
+      border-radius:50%;
+      background: linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3));
+      background-size:300%;
+      animation: neonMove 6s linear infinite;
+      padding:5px;
+      box-shadow: 0 0 25px rgba(0,255,247,0.25);
+    }
+    .profile-pic img{ width:100%; height:100%; border-radius:50%; display:block; object-fit:cover; }
+
+    .hero-text h1{
+      font-size:2.5rem;
+      margin:0;
+      background: linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3));
+      background-size:300%;
+      -webkit-background-clip:text;
+      -webkit-text-fill-color:transparent;
+      animation: neonMove 6s linear infinite;
+    }
+    .hero-text h2{
+      font-size:1.05rem;
+      color:#ddd;
+      margin:12px 0;
+      text-shadow:0 0 6px rgba(255,255,255,0.08);
+    }
+
+    /* typing small line (doesn't replace your original text) */
+    .typing {
+      margin-top:8px;
+      font-weight:500;
+      font-size:0.95rem;
+      color: #bfeef0;
+      min-height:1.2rem;
+      letter-spacing:0.2px;
+    }
+    .typing .cursor{ display:inline-block; width:2px; height:1.05rem; background:#bfeef0; margin-left:6px; animation: blink 1s steps(2) infinite; vertical-align:middle;}
+    @keyframes blink{ 0%,50%{opacity:1} 51%,100%{opacity:0} }
+
+    /* ---------------- bio / contact ---------------- */
+    .bio{
+      text-align:center;
+      font-size:1.15rem;
+      margin:20px auto;
+      max-width:800px;
+      font-weight:300;
+      color: #bfeef0;
+      line-height: 1.8;
+    }
+    .contact-btn{
+      display:inline-block;
+      margin:15px auto 40px;
+      padding:12px 30px;
+      color:#fff;
+      text-decoration:none;
+      border-radius:30px;
+      font-weight:bold;
+      background:linear-gradient(90deg, var(--neon1), var(--neon2), var(--neon3));
+      background-size:300%;
+      animation: neonMove 5s linear infinite;
+      box-shadow: 0 0 15px rgba(0,255,200,0.2);
+    }
+    .bio p {margin-top: 15px; font-size: 0.95rem; font-weight: 400; color: #bfeef0;}
+
+    /* ---------------- cards ---------------- */
+    .cards{
+      display:flex;
+      justify-content:center;
+      flex-wrap:wrap;
+      gap:20px;
+      padding:20px;
+    }
+    .card{
+      background: rgba(255,255,255,0.04);
+      border:1px solid rgba(0,255,247,0.45);
+      border-radius:15px;
+      padding:20px;
+      width:230px;
+      text-align:center;
+      transition: transform .25s ease, box-shadow .25s ease;
+      box-shadow: 0 0 12px rgba(0,255,247,0.06);
+    }
+    .card:hover{ transform:translateY(-6px) scale(1.03); box-shadow: 0 8px 30px rgba(0,255,247,0.14); }
+    .card i{ font-size:2rem; margin-bottom:10px; background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .card h4{ font-weight:600; margin-bottom:10px; font-size:1.1rem; background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* ---------------- SKILLS ---------------- */
+    .skills-section, .certifications-section{
+      max-width:1100px;
+      margin: 30px auto;
+      padding: 20px;
+      text-align:center;
+    }
+    .skills-title, .certifications-title{ font-size:1.6rem; margin-bottom:18px; background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .skills-grid, .certifications-grid{
+      display:flex;
+      gap:18px;
+      flex-wrap:wrap;
+      justify-content:center;
+    }
+    .skill, .certification-card{
+      width:240px;
+      background: rgba(255,255,255,0.03);
+      border:1px solid rgba(0,255,247,0.06);
+      padding:14px;
+      border-radius:10px;
+      text-align:left;
+    }
+    .skill .label{font-weight:600;margin-bottom:8px;color:#e8fefe}
+    .progress{
+      height:10px;
+      background: rgba(255,255,255,0.04);
+      border-radius:8px;
+      overflow:hidden;
+    }
+    .progress .bar{
+      height:100%;
+      width:0%;
+      background: linear-gradient(90deg,var(--neon1),var(--neon2));
+      border-radius:8px;
+      transition: width .9s cubic-bezier(.2,.9,.2,1);
+    }
+    .skill small{ display:block; margin-top:8px; color:#bfeef0; opacity:0.9; }
+
+    /* ---------------- CERTIFICATIONS (NEW) ---------------- */
+    .certification-card i{ font-size: 2rem; background: linear-gradient(90deg, var(--neon1), var(--neon2)); -webkit-background-clip: text; -webkit-text-fill-color: transparent; margin-bottom: 8px; }
+    .certification-card h4{ margin: 0; font-size: 1.1rem; color: #e0e0e0; }
+    .certification-card p{ margin: 5px 0 0; font-size: 0.9rem; color: #bfeef0; }
+    .certification-card a{ color: var(--neon1); text-decoration: none; font-weight: 500; transition: color 0.2s; }
+    .certification-card a:hover{ color: var(--neon2); }
+
+    /* ---------------- projects (تعديل الهيكل لتسهيل الإضافة) ---------------- */
+    .projects{ padding:60px 20px; text-align:center; }
+    .section-title{ font-size:2rem; margin-bottom:30px; background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+
+    /* style for collapsible content */
+    .project-section-wrapper{
+        background: rgba(255,255,255,0.03);
+        border:1px solid rgba(0,255,247,0.35);
+        border-radius:15px;
+        padding:25px;
+        max-width:900px;
+        margin: auto;
+        box-shadow:0 0 18px rgba(0,255,247,0.06);
+        margin-bottom: 30px;
+    }
+    .project-section-header{
+        display:flex;
+        align-items:center;
+        justify-content:space-between;
+        padding: 0 15px;
+        cursor: pointer;
+        user-select: none;
+    }
+    .project-section-header h3{
+        color: var(--neon1);
+        margin: 0;
+    }
+    .project-toggle-icon{
+        font-size: 1.2rem;
+        color: var(--neon1);
+        transition: transform 0.3s ease;
+    }
+    .project-toggle-icon.rotated{
+        transform: rotate(-180deg);
+    }
+    .project-content{
+        max-height: 1000px;
+        overflow: hidden;
+        transition: max-height 0.5s cubic-bezier(0.2, 0.9, 0.2, 1);
+    }
+    .project-content.collapsed{
+        max-height: 0;
+    }
+    
+    .project-images{ display:flex; justify-content:center; gap:20px; flex-wrap:wrap; margin-top:12px; }
+    .project-item{ 
+        width: 300px;
+        background: rgba(255,255,255,0.02);
+        border-radius:10px;
+        padding:10px;
+        border:2px solid rgba(0,255,247,0.12);
+        position: relative;
+        overflow: hidden;
+        transition: transform .3s ease, box-shadow .3s ease;
+    }
+    
+    .project-item:hover{
+        transform: scale(1.05);
+        box-shadow: 0 0 20px rgba(0,255,247,0.35);
+        border-color: var(--neon1);
+    }
+    .project-item img{ 
+        width:100%; 
+        border-radius:12px; 
+        opacity:0; 
+        transform:scale(.95); 
+        transition: all .6s ease;
+        border: 1px solid rgba(0,255,247,0.2); 
+        box-shadow: 0 0 8px rgba(0,255,247,0.08);
+    }
+    .project-item img.show{ opacity:1; transform:scale(1); }
+    .project-item p { display: none; }
+    
+    .video-container {
+      position: relative;
+      width: 100%;
+      height: 0;
+      padding-bottom: 56.25%; /* 16:9 Aspect Ratio */
+      margin-top: 20px;
+    }
+    .video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 10px;
+    }
+
+    /* ---------------- new: TIMELINE ---------------- */
+    .timeline-section{ max-width:1000px; margin:40px auto; padding:20px; }
+    .timeline-title{ text-align:center; font-size:1.6rem; margin-bottom:18px; background:linear-gradient(90deg,var(--neon1),var(--neon2),var(--neon3)); -webkit-background-clip:text; -webkit-text-fill-color:transparent; }
+    .timeline{
+      position:relative;
+      padding:20px 10px;
+      list-style:none;
+    }
+    .timeline::before{
+      content:"";
+      position:absolute;
+      left:50%;
+      top:0;
+      transform:translateX(-50%);
+      width:3px;
+      height:100%;
+      background: linear-gradient(180deg, rgba(0,255,247,0.2), rgba(255,0,255,0.2));
+      border-radius:2px;
+      opacity:0.6;
+    }
+    .timeline-item{
+      position:relative;
+      width:50%;
+      padding:16px 24px;
+      box-sizing:border-box;
+    }
+    .timeline-item:nth-child(odd){ left:0; text-align:right; }
+    .timeline-item:nth-child(even){ left:50%; text-align:left; }
+    .timeline-item .content{
+      display:inline-block;
+      background: rgba(255,255,255,0.03);
+      padding:12px 16px;
+      border-radius:10px;
+      border:1px solid rgba(0,255,247,0.06);
+      max-width:420px;
+    }
+    .timeline-item .date{
+      display:block;
+      font-size:0.85rem;
+      color:#bfeef0;
+      margin-bottom:6px;
+    }
+    .timeline-item::after{
+      content: "";
+      position:absolute;
+      top:22px;
+      width:14px; height:14px;
+      border-radius:50%;
+      background: linear-gradient(90deg,var(--neon1),var(--neon2));
+      box-shadow:0 0 12px rgba(0,255,247,0.12);
+    }
+    .timeline-item:nth-child(odd)::after{ right:-7px; }
+    .timeline-item:nth-child(even)::after{ left:-7px; }
+
+    /* ---------------- testimonials (simple slider-like) ---------------- */
+    .testimonials{ max-width:900px; margin:40px auto; padding:20px; text-align:center; }
+    .testimonials .box{ background: rgba(255,255,255,0.03); padding:18px; border-radius:12px; border:1px solid rgba(0,255,247,0.05); }
+
+    /* ---------------- contact form ---------------- */
+    .contact-form-wrap{ max-width:720px; margin:30px auto; padding:18px; }
+    form.contact-form{ display:grid; gap:12px; background: rgba(255,255,255,0.03); padding:16px; border-radius:10px; border:1px solid rgba(0,255,247,0.04); }
+    .contact-row{ display:flex; gap:10px; }
+    .contact-row input, .contact-row textarea, form.contact-form input, form.contact-form textarea{
+      width:100%;
+      padding:10px 12px;
+      border-radius:8px;
+      border:1px solid rgba(255,255,255,0.06);
+      background: rgba(0,0,0,0.2);
+      color:#e8fefe;
+      resize:vertical;
+    }
+    form.contact-form button{
+      width:max-content;
+      padding:10px 16px;
+      border-radius:8px;
+      border:none;
+      background: linear-gradient(90deg,var(--neon1),var(--neon2));
+      color:#001;
+      font-weight:700;
+      cursor:pointer;
+    }
+
+    /* ---------------- social / footer ---------------- */
+    .social-icons{ text-align:center; margin:40px 0; }
+    .social-icons a{ color:#e0e0e0; font-size:1.6rem; margin:0 12px; transition:all .2s; }
+    .social-icons a:hover{ color:var(--neon1); transform:translateY(-4px); }
+
+    footer{ text-align:center; padding:20px; font-size:0.9rem; border-top:1px solid rgba(255,255,255,0.06); color:#999; box-shadow:0 -1px 8px rgba(0,255,247,0.03); margin-top:30px; }
+
+    /* scroll to top */
+    #scrollTopBtn{ position:fixed; bottom:20px; right:20px; background:linear-gradient(90deg,var(--neon1),var(--neon2)); border:none; padding:12px 14px; border-radius:50%; cursor:pointer; box-shadow:0 0 15px rgba(0,255,247,0.12); color:#001; font-size:18px; display:none; z-index:1200; }
+
+    /* Chatbot Button */
+    #chatbot-btn {
+        position: fixed;
+        bottom: 90px;
+        right: 20px;
+        background: linear-gradient(90deg, var(--neon1), var(--neon2));
+        color: #001;
+        border: none;
+        width: 55px;
+        height: 55px;
+        border-radius: 50%;
+        font-size: 1.5rem;
+        cursor: pointer;
+        box-shadow: 0 0 15px rgba(0,255,247,0.4);
+        z-index: 1000;
+        transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+    #chatbot-btn:hover {
+        transform: scale(1.1);
+        box-shadow: 0 0 20px rgba(0,255,247,0.6);
+    }
+    
+    /* Chatbot Popup Window */
+    #chatbot-popup {
+        position: fixed;
+        bottom: 160px;
+        right: 20px;
+        width: 350px;
+        height: 500px;
+        background: rgba(255,255,255,0.03);
+        border: 1px solid rgba(0,255,247,0.45);
+        border-radius: 15px;
+        box-shadow: 0 5px 30px rgba(0,0,0,0.4);
+        z-index: 1000;
+        display: none; /* Hidden by default */
+        flex-direction: column;
+        overflow: hidden;
+    }
+    #chatbot-header {
+        background: rgba(5,5,5,0.8);
+        padding: 15px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(0,255,247,0.45);
+        font-weight: bold;
+        color: #e0e0e0;
+    }
+    #chatbot-header .close-btn {
+        background: none;
+        border: none;
+        color: #e0e0e0;
+        font-size: 1.2rem;
+        cursor: pointer;
+    }
+    #chatbot-iframe-container {
+        flex-grow: 1;
+        background: #111; /* Placeholder */
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+        color: #bfeef0;
+        padding: 20px;
+        text-align: right;
+        overflow-y: auto;
+    }
+    .chatbot-message {
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        padding: 15px;
+        margin-bottom: 15px;
+        line-height: 1.5;
+        width: 100%;
+        box-sizing: border-box;
+        text-align: right;
+    }
+    .chatbot-link {
+        display: inline-block;
+        padding: 10px 20px;
+        margin-top: 10px;
+        background: linear-gradient(90deg, var(--neon1), var(--neon2));
+        color: #001;
+        text-decoration: none;
+        border-radius: 20px;
+        font-weight: 600;
+        transition: transform 0.2s ease;
+    }
+    .chatbot-link:hover {
+        transform: scale(1.05);
+    }
+    
+    /* Q&A Chatbot Specific styles */
+    .chatbot-options {
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        margin-top: 15px;
+        overflow-y: auto;
+    }
+    .chatbot-options button {
+        background: rgba(255,255,255,0.05);
+        border: 1px solid rgba(0,255,247,0.3);
+        color: #bfeef0;
+        padding: 10px;
+        border-radius: 8px;
+        cursor: pointer;
+        text-align: right;
+        transition: background-color 0.2s ease, transform 0.2s ease;
+    }
+    .chatbot-options button:hover {
+        background: rgba(0,255,247,0.2);
+        transform: translateY(-2px);
+    }
+    .chatbot-answer-box {
+        margin-top: 20px;
+        padding: 15px;
+        background: rgba(255,255,255,0.1);
+        border-radius: 10px;
+        display: none;
+        animation: fadeIn 0.4s ease-in-out;
+        color: #f0f0f0; 
+        text-align: right;
+        width: 100%;
+        box-sizing: border-box;
+    }
+    @keyframes fadeIn {
+        from { opacity: 0; transform: translateY(10px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @media (max-width:900px){
+      .timeline::before{ left:10px; transform:none; }
+      .timeline-item{ width:100%; padding-left:36px; margin-bottom:14px; }
+      .timeline-item:nth-child(odd), .timeline-item:nth-child(even){ left:0; text-align:left; }
+      .timeline-item::after{ left:4px; }
+    }
+    @media (max-width: 450px) {
+      #chatbot-popup {
+          width: 90%;
+          right: 5%;
+          bottom: 120px;
+          height: 70vh;
+      }
+      #chatbot-btn {
+          bottom: 40px;
+          right: 20px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">Portfolio</div>
+    <nav>
+      <ul>
+        <li><a href="#top">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#certifications">Certifications</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#timeline">Timeline</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <section class="hero" id="top">
+    <div class="profile-pic" data-aos="fade-down" data-aos-duration="1000">
+      <img src="https://i.ibb.co/jkHrXcnV/my-photo.jpg" alt="Amr Gamal Awad">
+    </div>
+    <div class="hero-text" data-aos="fade-up" data-aos-duration="1000">
+      <h1>Amr Gamal Awad</h1>
+      <h2>Survey Engineer | Cybersecurity Enthusiast | IT & Tech Geek | Creative Designer</h2>
+
+      <div class="typing" aria-hidden="true">
+        <span id="typingText"></span><span class="cursor"></span>
+      </div>
+
+      <div style="margin-top:14px;">
+        <a href="assets/Amr-Gamal-Awad-CV.pdf" download class="contact-btn" style="margin-right:12px;">Download CV</a>
+        <a href="https://system.smart-mate.co/profile/155" target="_blank" class="contact-btn">Contact Me</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="bio" id="about">
+    <div data-aos="fade-up" data-aos-delay="200">
+        I'm Amr Gamal Awad, a Survey Engineer passionate about technology, information security and creative design.
+        <p>My goal is to blend my technical skills in surveying and civil engineering with the latest advancements in IT and cybersecurity to create efficient and secure solutions. I'm always eager to learn and take on new challenges.</p>
+    </div>
+  </section>
+
+  <section class="cards" aria-label="roles">
+    <div class="card" data-aos="fade-up">
+      <i class="fas fa-drafting-compass"></i>
+      <h4>Survey Engineer</h4>
+      <p>Experienced in surveying, mapping, and engineering project management.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="100">
+      <i class="fas fa-laptop-code"></i>
+      <h4>IT & Tech Geek</h4>
+      <p>Strong knowledge of the latest technologies and systems.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="200">
+      <i class="fas fa-shield-alt"></i>
+      <h4>Cybersecurity Enthusiast</h4>
+      <p>Passionate about information security and protecting digital data.</p>
+    </div>
+    <div class="card" data-aos="fade-up" data-aos-delay="300">
+      <i class="fas fa-pen-nib"></i>
+      <h4>Creative Designer</h4>
+      <p>Designing stylish and modern interfaces with a neon touch.</p>
+    </div>
+  </section>
+
+  <section id="skills" class="skills-section" aria-labelledby="skillsTitle">
+    <div id="skillsTitle" class="skills-title" data-aos="fade-up">Skills</div>
+    <div class="skills-grid">
+      <div class="skill" data-aos="fade-up">
+        <div class="label">Civil 3D / AutoCAD</div>
+        <div class="progress" data-percent="90"><div class="bar" style="width:0%"></div></div>
+        <small>Surveying & design workflows</small>
+      </div>
+      <div class="skill" data-aos="fade-up" data-aos-delay="100">
+        <div class="label">Design & Video Editing</div>
+        <div class="progress" data-percent="85"><div class="bar" style="width:0%"></div></div>
+        <small>Adobe Photoshop, Illustrator, Premiere Pro</small>
+      </div>
+      <div class="skill" data-aos="fade-up" data-aos-delay="200">
+        <div class="label">Cybersecurity</div>
+        <div class="progress" data-percent="80"><div class="bar" style="width:0%"></div></div>
+        <small>Security fundamentals & best practices</small>
+      </div>
+      <div class="skill" data-aos="fade-up" data-aos-delay="300">
+        <div class="label">Web Development</div>
+        <div class="progress" data-percent="78"><div class="bar" style="width:0%"></div></div>
+        <small>HTML, CSS, JS, basic React</small>
+      </div>
+    </div>
+  </section>
+
+  <section id="certifications" class="certifications-section" aria-labelledby="certificationsTitle">
+    <div id="certificationsTitle" class="certifications-title" data-aos="fade-up">Certifications</div>
+    <div class="certifications-grid">
+      <div class="certification-card" data-aos="fade-up">
+        <i class="fas fa-certificate"></i>
+        <h4>Certified Ethical Hacker</h4>
+        <p>Issued by EC-Council</p>
+        <a href="#">Coming Soon</a>
+      </div>
+      <div class="certification-card" data-aos="fade-up" data-aos-delay="100">
+        <i class="fas fa-shield-virus"></i>
+        <h4>CompTIA Security+</h4>
+        <p>Issued by CompTIA</p>
+        <a href="#">Coming Soon</a>
+      </div>
+      <div class="certification-card" data-aos="fade-up" data-aos-delay="200">
+        <i class="fas fa-code"></i>
+        <h4>Responsive Web Design</h4>
+        <p>Issued by FreeCodeCamp</p>
+        <a href="#">Coming Soon</a>
+      </div>
+    </div>
+  </section>
+
+  <section id="projects" class="projects">
+    <h2 class="section-title" data-aos="fade-up">Projects</h2>
+
+    <div class="project-section-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-section-header" onclick="toggleProject('civil3d-content')">
+            <h3>Civil 3D Design & Mapping</h3>
+            <i class="fas fa-chevron-down project-toggle-icon rotated"></i>
+        </div>
+        <div id="civil3d-content" class="project-content collapsed">
+            <div class="project-images">
+                <div class="project-item" data-aos="fade-up">
+                    <a href="https://i.ibb.co/YTRk2bQJ/1.jpg" data-lightbox="civil3d">
+                        <img src="https://i.ibb.co/YTRk2bQJ/1.jpg" alt="Civil 3D Road Design">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://i.ibb.co/k2rBQtCM/2.jpg" data-lightbox="civil3d">
+                        <img src="https://i.ibb.co/k2rBQtCM/2.jpg" alt="Contour Mapping">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://i.ibb.co/MkYgbzH6/3.jpg" data-lightbox="civil3d">
+                        <img src="https://i.ibb.co/MkYgbzH6/3.jpg" alt="Land Surveying">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://i.ibb.co/WNjsLCtk/4.jpg" data-lightbox="civil3d">
+                        <img src="https://i.ibb.co/WNjsLCtk/4.jpg" alt="Infrastructure Plan">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="project-section-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-section-header" onclick="toggleProject('design-content')">
+            <h3>Design & Video Editing Projects</h3>
+            <i class="fas fa-chevron-down project-toggle-icon"></i>
+        </div>
+        <div id="design-content" class="project-content collapsed">
+            <div class="project-images">
+                 <div class="project-item" data-aos="fade-up">
+                    <a href="https://i.ibb.co/TBGW88Cb/1.jpg" data-lightbox="design-projects">
+                        <img src="https://i.ibb.co/TBGW88Cb/1.jpg" alt="Creative Design Project">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="100">
+                    <a href="https://i.ibb.co/8gCBD1LZ/2.jpg" data-lightbox="design-projects">
+                        <img src="https://i.ibb.co/8gCBD1LZ/2.jpg" alt="Illustration and Graphic Design">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="200">
+                    <a href="https://i.ibb.co/svRWsW7h/3.jpg" data-lightbox="design-projects">
+                        <img src="https://i.ibb.co/svRWsW7h/3.jpg" alt="Modern Video Editing Layout">
+                    </a>
+                </div>
+                <div class="project-item" data-aos="fade-up" data-aos-delay="300">
+                    <a href="https://i.ibb.co/1fXVd85X/4.jpg" data-lightbox="design-projects">
+                        <img src="https://i.ibb.co/1fXVd85X/4.jpg" alt="Motion Graphics and Visual Effects">
+                    </a>
+                </div>
+            </div>
+            <p style="text-align:center; margin: 30px; font-style:italic;">
+                مشاريع Design & Video Editing قيد التحديث. قريباً سيتم عرض أعمالي هنا.
+            </p>
+        </div>
+    </div>
+
+    <div class="project-section-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-section-header" onclick="toggleProject('web-dev-content')">
+            <h3>Web Development Projects</h3>
+            <i class="fas fa-chevron-down project-toggle-icon"></i>
+        </div>
+        <div id="web-dev-content" class="project-content collapsed">
+            <p style="text-align:center; margin: 30px; font-style:italic;">
+                مشاريع Web Development قيد التحديث. قريباً سيتم عرض أعمالي هنا.
+            </p>
+        </div>
+    </div>
+    
+    <div class="project-section-wrapper" data-aos="fade-up" data-aos-delay="200">
+        <div class="project-section-header" onclick="toggleProject('cybersec-content')">
+            <h3>Cybersecurity Projects</h3>
+            <i class="fas fa-chevron-down project-toggle-icon"></i>
+        </div>
+        <div id="cybersec-content" class="project-content collapsed">
+            <p style="text-align:center; margin: 30px; font-style:italic;">
+                مشاريع Cybersecurity قيد التحديث. قريباً سيتم عرض أعمالي هنا.
+            </p>
+        </div>
+    </div>
+  </section>
+
+  <section id="timeline" class="timeline-section" aria-labelledby="timelineTitle">
+    <div id="timelineTitle" class="timeline-title" data-aos="fade-up">Experience Timeline</div>
+    <ul class="timeline" aria-hidden="false">
+      <li class="timeline-item" data-aos="fade-right">
+        <div class="content">
+          <span class="date">2021 — Present</span>
+          <strong>Surveying Projects & Civil Designs</strong>
+          <p>Worked on multiple civil surveying and design projects using Civil 3D and AutoCAD — processing GNSS data and producing maps/deliverables.</p>
+        </div>
+      </li>
+      <li class="timeline-item" data-aos="fade-left">
+        <div class="content">
+          <span class="date">2022</span>
+          <strong>Cybersecurity & IT Focus</strong>
+          <p>Studied security fundamentals and applied best practices to secure systems and workflows.</p>
+        </div>
+      </li>
+      <li class="timeline-item" data-aos="fade-right">
+        <div class="content">
+          <span class="date">2023 — 2024</span>
+          <strong>Web Projects & UI Design</strong>
+          <p>Built portfolio sites and experimented with modern UI/UX and neon-styled interfaces.</p>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="testimonials" aria-label="testimonials">
+    </section>
+
+  <div class="social-icons" data-aos="fade-up">
+    <a href="https://www.facebook.com/amr.gamal.awad?mibextid=ZbWKwL" target="_blank"><i class="fab fa-facebook"></i></a>
+    <a href="https://www.instagram.com/amrgamalawad50?igsh=eDYyMnpxcTFoY2xh" target="_blank"><i class="fab fa-instagram"></i></a>
+    <a href="https://wa.me/qr/ZEVCYMF26K57K1" target="_blank"><i class="fab fa-whatsapp"></i></a>
+  </div>
+
+  <section id="contact" class="contact-form-wrap" aria-labelledby="contactTitle">
+    <div id="contactTitle" style="text-align:center;margin-bottom:10px;font-weight:700;color:#bfeef0;" data-aos="fade-up">Get In Touch</div>
+    <form class="contact-form" id="contactForm" onsubmit="handleContactSubmit(event)" data-aos="fade-up">
+      <input type="text" id="name" name="name" placeholder="Your name" required />
+      <input type="email" id="email" name="email" placeholder="Your email" required />
+      <textarea id="message" name="message" rows="5" placeholder="Your message" required></textarea>
+      <div style="display:flex;gap:12px;align-items:center;justify-content:center;">
+        <button type="submit">Send Message</button>
+        <a href="assets/Amr-Gamal-Awad-CV.pdf" download style="display:inline-block;padding:10px 14px;border-radius:8px;background:rgba(255,255,255,0.03);border:1px solid rgba(0,255,247,0.04);color:#bfeef0;text-decoration:none;">Download CV</a>
+      </div>
+    </form>
+  </section>
+
+  <footer>© 2025 Amr Gamal Awad | Designed with ❤️</footer>
+  
+  <button id="chatbot-btn" aria-label="Open chatbot"><i class="fas fa-comment-dots"></i></button>
+
+  <div id="chatbot-popup">
+      <div id="chatbot-header">
+          Amr's Assistant
+          <button class="close-btn" aria-label="Close chatbot">&times;</button>
+      </div>
+      <div id="chatbot-iframe-container">
+          <div class="chatbot-message">
+              أهلاً بك! أنا مساعد عمرو الشخصي. <br>
+              اختر سؤالاً لأجيبك، أو تواصل معه مباشرةً.
+          </div>
+          <div class="chatbot-options">
+              <button onclick="displayChatbotAnswer('skills')">ما هي مهاراتي الرئيسية؟</button>
+              <button onclick="displayChatbotAnswer('design')">أخبرني عن خبرتك في التصميم؟</button>
+              <button onclick="displayChatbotAnswer('cybersecurity')">ماذا عن خبرتك في الأمن السيبراني؟</button>
+              <button onclick="displayChatbotAnswer('contact')">كيف يمكنني التواصل معك؟</button>
+          </div>
+          <div id="chatbot-answer-box" class="chatbot-answer-box"></div>
+      </div>
+  </div>
+
+  <button id="scrollTopBtn" aria-label="scroll to top"><i class="fas fa-chevron-up"></i></button>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.4/js/lightbox-plus-jquery.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({
+      duration: 800,
+      once: true,
+    });
+
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true,
+      'fitImagesInViewport': true,
+      'maxWidth': 1600,
+      'maxHeight': 1200
+    });
+
+    const images = document.querySelectorAll('.project-item img');
+    const imgObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          imgObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2 });
+    images.forEach(img => imgObserver.observe(img));
+
+    const scrollBtn = document.getElementById("scrollTopBtn");
+    window.addEventListener("scroll", () => {
+      scrollBtn.style.display = window.scrollY > 300 ? "block" : "none";
+    });
+    scrollBtn.addEventListener("click", () => window.scrollTo({ top: 0, behavior: "smooth" }));
+
+    const skillBars = document.querySelectorAll('.progress');
+    const skillsObserver = new IntersectionObserver(entries => {
+      entries.forEach(entry => {
+        if(entry.isIntersecting){
+          const bar = entry.target.querySelector('.bar');
+          const percent = entry.target.getAttribute('data-percent') || '70';
+          bar.style.width = percent + '%';
+          skillsObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.25 });
+    skillBars.forEach(s => skillsObserver.observe(s));
+
+    const phrases = [
+      "Survey Engineer",
+      "Cybersecurity Enthusiast",
+      "IT & Tech Geek",
+      "Creative Designer"
+    ];
+    const typingEl = document.getElementById('typingText');
+    let pi = 0, ci = 0;
+    function typeLoop(){
+      const full = phrases[pi];
+      if(ci <= full.length){
+        typingEl.textContent = full.slice(0,ci);
+        ci++;
+        setTimeout(typeLoop, 80);
+      } else {
+        setTimeout(() => eraseLoop(), 900);
+      }
+    }
+    function eraseLoop(){
+      const full = phrases[pi];
+      if(ci > 0){
+        typingEl.textContent = full.slice(0,ci-1);
+        ci--;
+        setTimeout(eraseLoop, 40);
+      } else {
+        pi = (pi + 1) % phrases.length;
+        setTimeout(typeLoop, 200);
+      }
+    }
+    setTimeout(typeLoop, 600);
+
+    function handleContactSubmit(e){
+      e.preventDefault();
+      const name = document.getElementById('name').value.trim();
+      const email = document.getElementById('email').value.trim();
+      const msg = document.getElementById('message').value.trim();
+      const subject = encodeURIComponent('Portfolio Contact from ' + name);
+      const body = encodeURIComponent(`Name: ${name}\nEmail: ${email}\n\nMessage:\n${msg}`);
+      window.location.href = `mailto:amrgamalawad6@gmail.com?subject=${subject}&body=${body}`;
+    }
+
+    document.body.addEventListener('keydown', (e) => {
+      if(e.key === 'Tab') document.documentElement.style.scrollBehavior = 'smooth';
+    });
+
+    // New collapsible sections logic
+    function toggleProject(id) {
+        const content = document.getElementById(id);
+        const icon = content.previousElementSibling.querySelector('.project-toggle-icon');
+        
+        if (content.classList.contains('collapsed')) {
+            content.classList.remove('collapsed');
+            icon.classList.remove('rotated');
+        } else {
+            content.classList.add('collapsed');
+            icon.classList.add('rotated');
+        }
+    }
+    
+    // Chatbot functionality
+    const chatbotBtn = document.getElementById('chatbot-btn');
+    const chatbotPopup = document.getElementById('chatbot-popup');
+    const closeBtn = document.querySelector('#chatbot-header .close-btn');
+
+    chatbotBtn.addEventListener('click', () => {
+        chatbotPopup.style.display = 'flex';
+    });
+    
+    closeBtn.addEventListener('click', () => {
+        chatbotPopup.style.display = 'none';
+    });
+    
+    // Q&A Logic
+    function displayChatbotAnswer(questionId) {
+        const answerBox = document.getElementById('chatbot-answer-box');
+        let answerText = '';
+        
+        switch(questionId) {
+            case 'skills':
+                answerText = 'مهاراتي الرئيسية تشمل: التصميم الهندسي باستخدام Civil 3D/AutoCAD، التصميم الإبداعي والمونتاج باستخدام برامج Adobe، ومهارات في الأمن السيبراني وتطوير الويب.';
+                break;
+            case 'design':
+                answerText = 'أمتلك خبرة في التصميم الجرافيكي والمونتاج، حيث أستخدم Adobe Photoshop وIllustrator وPremiere Pro لإنشاء محتوى مرئي جذاب ومميز.';
+                break;
+            case 'cybersecurity':
+                answerText = 'خبرتي في الأمن السيبراني تركز على أساسيات الأمان وأفضل الممارسات لحماية البيانات، بالإضافة إلى معرفة قوية بأحدث التقنيات في هذا المجال.';
+                break;
+            case 'contact':
+                answerText = 'يمكنك التواصل معي عبر البريد الإلكتروني: amrgamalawad6@gmail.com أو من خلال روابط التواصل الاجتماعي الموجودة في أسفل الموقع.';
+                break;
+        }
+        
+        answerBox.innerHTML = answerText;
+        answerBox.style.display = 'block';
+    }
+  </script>
+</body>
+</html>
